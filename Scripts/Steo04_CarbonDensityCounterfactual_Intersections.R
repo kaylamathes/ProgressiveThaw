@@ -57,9 +57,38 @@ summary_500 <- final_result_500 %>%
   )%>%
   drop_na()
 
-write.csv(summary_500, "Output/Couterfactual_CarbonDensity/Partial/500.csv", row.names = FALSE)
+write.csv(summary_1000, "Output/Counterfactual_CarbonDensity/Partial/1000.csv", row.names = FALSE)
 
 
+
+#1000
+polygons_clip_1000 <- polygons%>%
+  filter(FIRENUMBER >= 500 & FIRENUMBER < 1000)
+
+results_1000 <- lapply(batches, function(batch) {
+  st_join(batch, polygons_clip_1000, join = st_intersects)
+})
+
+final_result_1000 <- rbindlist(results_1000)
+
+summary_1000 <- final_result_1000 %>%
+  st_drop_geometry() %>%  # Drop geometry for faster summary
+  group_by(SIZE_ACRES, FIRENUMBER) %>%
+  summarize(
+    carbon_100_mean = mean(carbon_100, na.rm = TRUE),
+    carbon_200_mean = mean(carbon_200, na.rm = TRUE),
+    carbon_300_mean = mean(carbon_300, na.rm = TRUE),
+    carbon_100_max = max(carbon_100, na.rm = TRUE),
+    carbon_200_max = max(carbon_200, na.rm = TRUE),
+    carbon_300_max = max(carbon_300, na.rm = TRUE),
+    carbon_100_min = min(carbon_100, na.rm = TRUE),
+    carbon_200_min = min(carbon_200, na.rm = TRUE),
+    carbon_300_min = min(carbon_300, na.rm = TRUE),
+    .groups = 'drop'
+  )%>%
+  drop_na()
+
+write.csv(summary_1000, "Output/Counterfactual_CarbonDensity/Partial/500.csv", row.names = FALSE)
 
 
 
