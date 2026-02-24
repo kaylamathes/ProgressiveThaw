@@ -5,17 +5,9 @@ library(sf)
 library(parallel)
 library(tidyverse)
 library(data.table)
-
-
-##Data upload 
-CarbonDensity <- read.csv("Data/CarbonDensity/Palmtag_CarbonStorage_FullCounterfactualPerimeter_Step06_CarbonStorage_BurmanLake.csv")
-##convert to sf 
-CarbonDensity_sf <- st_as_sf(CarbonDensity, coords = c("lon", "lat"), crs = 4326)
-points <- st_transform(CarbonDensity_sf, crs = 3338)
-
-
+######### 1. Save a valid version of the counterfactual perimeter ensembles 
 #Perimeter Data
-polygons_notvalid = st_read("/Users/kmathes/Desktop/FSPro_Runs/2021_Burman Lake/2021_Burman_Lake_FINAL_032525_FSPro_EnsemblePerimeters/2021_Burman_Lake_FINAL_032525_FSPro_EnsemblePerimeters.shp")%>%
+polygons_notvalid = st_read("/Users/kmathes/Desktop/FSPro_Runs/2022_Little Mosquito/2022_Little_Mosquito_FINAL_032325_FSPro_EnsemblePerimeters/2022_Little_Mosquito_FINAL_032325_FSPro_EnsemblePerimeters.shp")%>%
   st_transform(crs = 3338)
 
 ##Find the NA valid fires 
@@ -25,6 +17,35 @@ polygons_notvalid <- polygons_notvalid%>%
 ##Delete the NA valid fires 
 polygons <- polygons_notvalid%>%
   filter(Valid == "TRUE")
+
+st_write(polygons, "/Users/kmathes/Desktop/FSPro_Runs/2022_LittleMosquito_valid.shp",driver  = "ESRI Shapefile")
+
+
+######## 2. Go to GEE for the Intersection ############
+
+##############3. Add a deep carbon density column (Strauss et al. 2021 & Hugelius et al. 2014 estimates): 8.125kgC/m3
+
+CarbonDensity <- read_csv("Output/Counterfactual_CarbonDensity/Partial/TenOClock_Carbon_Storage_Intersection.csv")
+
+CarbonDensity_total <- CarbonDensity%>%
+  mutate(DeepCarbon_3plus = 8.125)%>%
+  mutate(FireName = "Ten O Clock")%>%
+  dplyr::select(!"system:index")%>%
+  dplyr::select(!".geo")%>%
+  dplyr::select(!"Valid")
+
+write.csv(CarbonDensity_total, "Output/Counterfactual_CarbonDensity/TenOClock_CarbonDensityIntersectionTotal.csv", row.names = FALSE)
+
+
+
+################################### Old Script ###################################
+#############################################################################################################################
+##Data upload 
+CarbonDensity <- read.csv("Data/CarbonDensity/Palmtag_CarbonStorage_FullCounterfactualPerimeter_Step06_CarbonStorage_Cottonwood.csv")
+##convert to sf 
+CarbonDensity_sf <- st_as_sf(CarbonDensity, coords = c("lon", "lat"), crs = 4326)
+points <- st_transform(CarbonDensity_sf, crs = 3338)
+
 
 ####Split up the batches 
 batch_size <- 100000
@@ -92,7 +113,7 @@ write.csv(summary_1000, "Output/Counterfactual_CarbonDensity/Partial/1000.csv", 
 
 #1500
 polygons_clip_1500 <- polygons%>%
-  filter(FIRENUMBER >= 100 & FIRENUMBER < 1500)
+  filter(FIRENUMBER >= 1000 & FIRENUMBER < 1500)
 
 results_1500 <- lapply(batches, function(batch) {
   st_join(batch, polygons_clip_1500, join = st_intersects)
@@ -296,7 +317,7 @@ write.csv(summary_4500, "Output/Counterfactual_CarbonDensity/Partial/4500.csv", 
 
 #5000
 polygons_clip_5000 <- polygons%>%
-  filter(FIRENUMBER >= 4500 & FIRENUMBER < 5000)
+  filter(FIRENUMBER >= 4500 & FIRENUMBER <= 5000)
 
 results_5000 <- lapply(batches, function(batch) {
   st_join(batch, polygons_clip_5000, join = st_intersects)
@@ -325,17 +346,16 @@ write.csv(summary_5000, "Output/Counterfactual_CarbonDensity/Partial/5000.csv", 
 
 
 ####Once all run, upload to bind the files together 
-
-CarbonDensity_500  <- read.csv("Output/Couterfactual_CarbonDensity/Partial/500.csv")
-CarbonDensity_1000  <- read.csv("Output/Couterfactual_CarbonDensity/Partial/1000.csv")
-CarbonDensity_1500  <- read.csv("Output/Couterfactual_CarbonDensity/Partial/1500.csv")
-CarbonDensity_2000  <- read.csv("Output/Couterfactual_CarbonDensity/Partial/2000.csv")
-CarbonDensity_2500  <- read.csv("Output/Couterfactual_CarbonDensity/Partial/2500.csv")
-CarbonDensity_3000  <- read.csv("Output/Couterfactual_CarbonDensity/Partial/3000.csv")
-CarbonDensity_3500  <- read.csv("Output/Couterfactual_CarbonDensity/Partial/3500.csv")
-CarbonDensity_4000  <- read.csv("Output/Couterfactual_CarbonDensity/Partial/4000.csv")
-CarbonDensity_4500  <- read.csv("Output/Couterfactual_CarbonDensity/Partial/4500.csv")
-CarbonDensity_5000  <- read.csv("Output/Couterfactual_CarbonDensity/Partial/5000.csv")
+CarbonDensity_500  <- read.csv("Output/Counterfactual_CarbonDensity/Partial/500.csv")
+CarbonDensity_1000  <- read.csv("Output/Counterfactual_CarbonDensity/Partial/1000.csv")
+CarbonDensity_1500  <- read.csv("Output/Counterfactual_CarbonDensity/Partial/1500.csv")
+CarbonDensity_2000  <- read.csv("Output/Counterfactual_CarbonDensity/Partial/2000.csv")
+CarbonDensity_2500  <- read.csv("Output/Counterfactual_CarbonDensity/Partial/2500.csv")
+CarbonDensity_3000  <- read.csv("Output/Counterfactual_CarbonDensity/Partial/3000.csv")
+CarbonDensity_3500  <- read.csv("Output/Counterfactual_CarbonDensity/Partial/3500.csv")
+CarbonDensity_4000  <- read.csv("Output/Counterfactual_CarbonDensity/Partial/4000.csv")
+CarbonDensity_4500  <- read.csv("Output/Counterfactual_CarbonDensity/Partial/4500.csv")
+CarbonDensity_5000  <- read.csv("Output/Counterfactual_CarbonDensity/Partial/5000.csv")
 
 
 
@@ -343,8 +363,5 @@ CarbonDensity_total <- rbind(CarbonDensity_500,CarbonDensity_1000,CarbonDensity_
                              CarbonDensity_2000,CarbonDensity_2500,CarbonDensity_3000,
                              CarbonDensity_3500,CarbonDensity_4000,CarbonDensity_4500,
                              CarbonDensity_5000)
-
-
-write.csv(CarbonDensity_total, "Output/Couterfactual_CarbonDensity/BurmanLake_CarbonDensityIntersection.csv", row.names = FALSE)
 
 

@@ -91,7 +91,7 @@ options(scipen=999)
 ##Load ensemble perimeters 
 
 #Counterfactual Perimeter Data
-polygons_notvalid = st_read("/Users/kmathes/Desktop/FSPro_Runs/2017_North Whakatna/2017_North_Whakatna_NEW_Final_2020_Rare_Clipped_040425_FSPro_EnsemblePerimet/2017_North_Whakatna_NEW_Final_2020_Rare_Clipped_040425_FSPro_EnsemblePerimeters.shp")%>%
+polygons_notvalid = st_read("/Users/kmathes/Desktop/FSPro_Runs/2018_Twomile Lake/2018_Twomile_Lake_NEW_5000f_Final_Rare_Clip_040725_FSPro_EnsemblePerimeters/2018_Twomile_Lake_NEW_5000f_Final_Rare_Clip_040725_FSPro_EnsemblePerimeters.shp")%>%
   st_transform(crs = 3338)
 
 ##Find the NA valid fires 
@@ -103,7 +103,7 @@ polygons <- polygons_notvalid%>%
   filter(Valid == "TRUE")
 
 ####Read in criteria points: Changing the soils criteria. Will keep the consistent 1-3 textures throughout the scenarios and just change the burn depth 
-points <- st_read("/Users/kmathes/Desktop/PermafrostThaw/ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Talik_criteria_v2_NorthWhakatna_VeryHigh.shp")
+points <- st_read("Output/Counterfactual_Talik_perimeters_V2/Talik_criteria_v2_TwomileLake_VeryHigh.shp")
 
 
 # --- Create Clipping Polygon (Buffer) ---
@@ -141,7 +141,7 @@ intersection_proj_wgs84_500<- intersection_proj_wgs84_500%>%
   mutate(talik_area_acres = talik_area_m2*0.000247105)%>%
   st_drop_geometry()
 
-write.csv(intersection_proj_wgs84_500, "ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/500.csv")
+write.csv(intersection_proj_wgs84_500, "Output/Counterfactual_Talik_perimeters_V2/Partial/500.csv")
 
 
 ##1000 
@@ -162,7 +162,7 @@ intersection_proj_wgs84_1000<- intersection_proj_wgs84_1000%>%
   mutate(talik_area_acres = talik_area_m2*0.000247105)%>%
   st_drop_geometry()
 
-write.csv(intersection_proj_wgs84_1000, "ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/1000.csv")
+write.csv(intersection_proj_wgs84_1000, "Output/Counterfactual_Talik_perimeters_V2/Partial/1000.csv")
 
 
 ##1500 
@@ -183,7 +183,7 @@ intersection_proj_wgs84_1500<- intersection_proj_wgs84_1500%>%
   mutate(talik_area_acres = talik_area_m2*0.000247105)%>%
   st_drop_geometry()
 
-write.csv(intersection_proj_wgs84_1500, "ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/1500.csv")
+write.csv(intersection_proj_wgs84_1500, "Output/Counterfactual_Talik_perimeters_V2/Partial/1500.csv")
 
 
 ##2000
@@ -204,7 +204,7 @@ intersection_proj_wgs84_2000 <- intersection_proj_wgs84_2000%>%
   mutate(talik_area_acres = talik_area_m2*0.000247105)%>%
   st_drop_geometry()
 
-write.csv(intersection_proj_wgs84_2000, "ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/2000.csv")
+write.csv(intersection_proj_wgs84_2000, "Output/Counterfactual_Talik_perimeters_V2/Partial/2000.csv")
 
 
 ##2500
@@ -225,7 +225,7 @@ intersection_proj_wgs84_2500 <- intersection_proj_wgs84_2500%>%
   mutate(talik_area_acres = talik_area_m2*0.000247105)%>%
   st_drop_geometry()
 
-write.csv(intersection_proj_wgs84_2500, "ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/2500.csv")
+write.csv(intersection_proj_wgs84_2500, "Output/Counterfactual_Talik_perimeters_V2/Partial/2500.csv")
 
 
 ##3000
@@ -246,7 +246,7 @@ intersection_proj_wgs84_3000 <- intersection_proj_wgs84_3000%>%
   mutate(talik_area_acres = talik_area_m2*0.000247105)%>%
   st_drop_geometry()
 
-write.csv(intersection_proj_wgs84_3000, "ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/3000.csv")
+write.csv(intersection_proj_wgs84_3000, "Output/Counterfactual_Talik_perimeters_V2/Partial/3000.csv")
 
 
 ##3500
@@ -267,7 +267,7 @@ intersection_proj_wgs84_3500 <- intersection_proj_wgs84_3500%>%
   mutate(talik_area_acres = talik_area_m2*0.000247105)%>%
   st_drop_geometry()
 
-write.csv(intersection_proj_wgs84_3500, "ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/3500.csv")
+write.csv(intersection_proj_wgs84_3500, "Output/Counterfactual_Talik_perimeters_V2/Partial/3500.csv")
 
 
 ##4000
@@ -288,7 +288,7 @@ intersection_proj_wgs84_4000 <- intersection_proj_wgs84_4000%>%
   mutate(talik_area_acres = talik_area_m2*0.000247105)%>%
   st_drop_geometry()
 
-write.csv(intersection_proj_wgs84_4000, "ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/4000.csv")
+write.csv(intersection_proj_wgs84_4000, "Output/Counterfactual_Talik_perimeters_V2/Partial/4000.csv")
 
 
 ##4500
@@ -309,7 +309,7 @@ intersection_proj_wgs84_4500 <- intersection_proj_wgs84_4500%>%
   mutate(talik_area_acres = talik_area_m2*0.000247105)%>%
   st_drop_geometry()
 
-write.csv(intersection_proj_wgs84_4500, "ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/4500.csv")
+write.csv(intersection_proj_wgs84_4500, "Output/Counterfactual_Talik_perimeters_V2/Partial/4500.csv")
 
 
 ##5000
@@ -330,20 +330,20 @@ intersection_proj_wgs84_5000 <- intersection_proj_wgs84_5000%>%
   mutate(talik_area_acres = talik_area_m2*0.000247105)%>%
   st_drop_geometry()
 
-write.csv(intersection_proj_wgs84_5000, "ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/5000.csv")
+write.csv(intersection_proj_wgs84_5000, "Output/Counterfactual_Talik_perimeters_V2/Partial/5000.csv")
 
 
 
-intersection_proj_wgs84_500 <- read_csv("ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/500.csv")
-intersection_proj_wgs84_1000 <- read_csv("ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/1000.csv")
-intersection_proj_wgs84_1500 <- read_csv("ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/1500.csv")
-intersection_proj_wgs84_2000 <- read_csv("ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/2000.csv")
-intersection_proj_wgs84_2500 <- read_csv("ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/2500.csv")
-intersection_proj_wgs84_3000 <- read_csv("ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/3000.csv")
-intersection_proj_wgs84_3500 <- read_csv("ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/3500.csv")
-intersection_proj_wgs84_4000 <- read_csv("ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/4000.csv")
-intersection_proj_wgs84_4500 <- read_csv("ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/4500.csv")
-intersection_proj_wgs84_5000 <- read_csv("ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Partial/5000.csv")
+intersection_proj_wgs84_500 <- read_csv("Output/Counterfactual_Talik_perimeters_V2/Partial/500.csv")
+intersection_proj_wgs84_1000 <- read_csv("Output/Counterfactual_Talik_perimeters_V2/Partial/1000.csv")
+intersection_proj_wgs84_1500 <- read_csv("Output/Counterfactual_Talik_perimeters_V2/Partial/1500.csv")
+intersection_proj_wgs84_2000 <- read_csv("Output/Counterfactual_Talik_perimeters_V2/Partial/2000.csv")
+intersection_proj_wgs84_2500 <- read_csv("Output/Counterfactual_Talik_perimeters_V2/Partial/2500.csv")
+intersection_proj_wgs84_3000 <- read_csv("Output/Counterfactual_Talik_perimeters_V2/Partial/3000.csv")
+intersection_proj_wgs84_3500 <- read_csv("Output/Counterfactual_Talik_perimeters_V2/Partial/3500.csv")
+intersection_proj_wgs84_4000 <- read_csv("Output/Counterfactual_Talik_perimeters_V2/Partial/4000.csv")
+intersection_proj_wgs84_4500 <- read_csv("Output/Counterfactual_Talik_perimeters_V2/Partial/4500.csv")
+intersection_proj_wgs84_5000 <- read_csv("Output/Counterfactual_Talik_perimeters_V2/Partial/5000.csv")
 
 intersection_proj_wgs84_total <- rbind(intersection_proj_wgs84_1000, intersection_proj_wgs84_2000,
                                        intersection_proj_wgs84_3000,intersection_proj_wgs84_4000,
@@ -368,7 +368,7 @@ full_polygons <- full_polygons%>%
   replace_na(list(talik_area_m2 = 0, talik_area_acres = 0))
 
 ###Write Files
-write.csv(full_polygons,"/Users/kmathes/Desktop/PermafrostThaw/ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Intersections/VeryHigh/Talik_perimeter_v2_NorthWhakatna_VeryHigh.csv")
+write.csv(full_polygons,"/Users/kmathes/Desktop/ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Intersections/High/Talik_perimeter_v2_TwomileLake_VeryHigh.csv")
 
 ##st_write(intersection_proj_wgs84_total, "/Users/kmathes/Desktop/PermafrostThaw/ProgressiveThaw/Output/Counterfactual_Talik_perimeters_V2/Talik_perimeters_v2_BigCreek.shp", driver = "ESRI Shapefile", append = FALSE)
 
