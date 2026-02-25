@@ -23,6 +23,7 @@ Volume_low_warm <- read.csv("Output/Counterfactual_TalikThawedPermafrost/AllFire
 
 Volume_low_total <- rbind(Volume_low_cold,Volume_low_Intermediate,Volume_low_warm)
 
+
 ##Medium Scenario 
 Volume_medium_cold <- read.csv("Output/Counterfactual_TalikThawedPermafrost/AllFire_medium_cold_depth.csv")%>%
   select(!X.1)%>%select(!X)%>%select(!Valid)%>%select(!Volume_check)%>%select(!Volume_check2)%>%
@@ -57,7 +58,6 @@ Volume_high_total <- rbind(Volume_high_cold,Volume_high_Intermediate,Volume_high
 ###Carbon Density Data upload
 
 
-
 BurmanLake <- read.csv("Output/Counterfactual_CarbonDensity/BurmanLake_CarbonDensityIntersectionTotal.csv")
 ChloyaLakes <- read.csv("Output/Counterfactual_CarbonDensity/ChloyaLakes_CarbonDensityIntersectionTotal.csv")%>%
   dplyr::select(!FireName)%>%
@@ -78,9 +78,6 @@ TreatIsland <- read.csv("Output/Counterfactual_CarbonDensity/TreatIsland_CarbonD
 TwomileLake <- read.csv("Output/Counterfactual_CarbonDensity/TwomileLake_CarbonDensityIntersectionTotal.csv")
 VaultCreek <- read.csv("Output/Counterfactual_CarbonDensity/VaultCreek_CarbonDensityIntersectionTotal.csv")
 BigCreek <- read.csv("Output/Counterfactual_CarbonDensity/BigCreek_CarbonDensityIntersectionTotal.csv")
-BigCreek2 <- read.csv("Output/Counterfactual_CarbonDensity/BigCreek2_CarbonDensityIntersectionTotal.csv")%>%
-  dplyr::select(!FireName)%>%
-  mutate(FireName = "Big Creek 2")
 NorthWhakatna <- read.csv("Output/Counterfactual_CarbonDensity/NorthWhakatna_CarbonDensityIntersectionTotal.csv")
 Huslia1 <- read.csv("Output/Counterfactual_CarbonDensity/Huslia1_CarbonDensityIntersectionTotal.csv")
 CrowLake <- read.csv("Output/Counterfactual_CarbonDensity/CrowLake_CarbonDensityIntersectionTotal.csv")
@@ -92,12 +89,14 @@ GobletCreek <- read.csv("Output/Counterfactual_CarbonDensity/GobletCreek_CarbonD
 BoulderCreek <- read.csv("Output/Counterfactual_CarbonDensity/BoulderCreek_CarbonDensityIntersectionTotal.csv")
 Kuranakh <- read.csv("Output/Counterfactual_CarbonDensity/Kuranakh_CarbonDensityIntersectionTotal.csv")
 GeorgeLake <- read.csv("Output/Counterfactual_CarbonDensity/GeorgeLake_CarbonDensityIntersectionTotal.csv")
+BigCreek2 <- read.csv("Output/Counterfactual_CarbonDensity/BigCreek2_CarbonDensityIntersectionTotal.csv")
 
 Total_CarbonDensity <- rbind(BurmanLake,ChloyaLakes,BrooksCreek,ChenaDyke,DiscoveryCreek,
                              Cottonwood,TowahminaLake,SwiftFork,SuckerCreekNorth,
                              VunleLake,MartenCreek,QwikRiver,LittleMosquito,
                              TsedolalindinLake,TreatIsland,TwomileLake,VaultCreek,
-                             BigCreek,BigCreek2, NorthWhakatna,Huslia1,
+                             BigCreek,BigCreek2,
+                             NorthWhakatna,Huslia1,
                              CrowLake,BillyHawkCreek,GoldstreamCreek,OlnesPond,
                              TenOClock,GobletCreek,BoulderCreek,Kuranakh,GeorgeLake)
 
@@ -123,6 +122,9 @@ Volume_high_total_carbon <- left_join(Volume_high_total, Total_CarbonDensity, by
   mutate(CarbonStorage_kg_3m = Talik_Volume_m3_3m*carbon_300)%>%
   mutate(CarbonStorage_kg_deep = Talik_Volume_m3_deep*DeepCarbon_3plus)%>%
   mutate(CarbonStorage_Total_kg = CarbonStorage_kg_1m+CarbonStorage_kg_2m+CarbonStorage_kg_3m+CarbonStorage_kg_deep)
+
+
+
 
 
 ####Write the volume plus carbon mass dataframes 

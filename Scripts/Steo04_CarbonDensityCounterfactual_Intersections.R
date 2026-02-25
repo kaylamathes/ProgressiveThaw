@@ -7,7 +7,7 @@ library(tidyverse)
 library(data.table)
 ######### 1. Save a valid version of the counterfactual perimeter ensembles 
 #Perimeter Data
-polygons_notvalid = st_read("/Users/kmathes/Desktop/FSPro_Runs/2022_Little Mosquito/2022_Little_Mosquito_FINAL_032325_FSPro_EnsemblePerimeters/2022_Little_Mosquito_FINAL_032325_FSPro_EnsemblePerimeters.shp")%>%
+polygons_notvalid = st_read("/Users/kmathes/Desktop/FSPro_Runs/2019_Big Creek/2019_Big_Creek_FINAL__040125_FSPro_EnsemblePerimeters/Big_Creek_2019_FINAL__040125_FSPro_EnsemblePerimeters.shp")%>%
   st_transform(crs = 3338)
 
 ##Find the NA valid fires 
@@ -18,23 +18,23 @@ polygons_notvalid <- polygons_notvalid%>%
 polygons <- polygons_notvalid%>%
   filter(Valid == "TRUE")
 
-st_write(polygons, "/Users/kmathes/Desktop/FSPro_Runs/2022_LittleMosquito_valid.shp",driver  = "ESRI Shapefile")
+st_write(polygons, "/Users/kmathes/Desktop/FSPro_Runs/2019_BigCreek_valid.shp",driver  = "ESRI Shapefile")
 
 
 ######## 2. Go to GEE for the Intersection ############
 
 ##############3. Add a deep carbon density column (Strauss et al. 2021 & Hugelius et al. 2014 estimates): 8.125kgC/m3
 
-CarbonDensity <- read_csv("Output/Counterfactual_CarbonDensity/Partial/TenOClock_Carbon_Storage_Intersection.csv")
+CarbonDensity <- read_csv("Output/Counterfactual_CarbonDensity/Partial/BigCreek2_Carbon_Storage_Intersection.csv")
 
 CarbonDensity_total <- CarbonDensity%>%
   mutate(DeepCarbon_3plus = 8.125)%>%
-  mutate(FireName = "Ten O Clock")%>%
+  mutate(FireName = "Big Creek 2")%>%
   dplyr::select(!"system:index")%>%
   dplyr::select(!".geo")%>%
   dplyr::select(!"Valid")
 
-write.csv(CarbonDensity_total, "Output/Counterfactual_CarbonDensity/TenOClock_CarbonDensityIntersectionTotal.csv", row.names = FALSE)
+write.csv(CarbonDensity_total, "Output/Counterfactual_CarbonDensity/BigCreek2_CarbonDensityIntersectionTotal.csv", row.names = FALSE)
 
 
 

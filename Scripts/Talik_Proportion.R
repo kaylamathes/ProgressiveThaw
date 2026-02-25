@@ -130,7 +130,7 @@ TwomileLake_Medium <- read_csv("Output/Counterfactual_Talik_perimeters_V2/Inters
 BoulderCreek_Medium <- read_csv("Output/Counterfactual_Talik_perimeters_V2/Intersections/High/Talik_perimeter_v2_BoulderCreek.csv")%>%
   mutate(FireName = "Boulder Creek") %>% select(!Valid)
 OlnesPond_Medium <- read_csv("Output/Counterfactual_Talik_perimeters_V2/Intersections/High/Talik_perimeter_v2_OlnesPond.csv")%>%
-  mutate(FireName = "Olnes Pond") %>% select(!Valid)
+  mutate(FireName = "Olnes Pond") %>% select(!Valid)%>% select(!"...4")
 NorthWhakatna_Medium <- read_csv("Output/Counterfactual_Talik_perimeters_V2/Intersections/High/Talik_perimeter_v2_NorthWhakatna.csv")%>%
   mutate(FireName = "North Whakatna") %>% select(!Valid)
 BigCreek_Medium <- read_csv("Output/Counterfactual_Talik_perimeters_V2/Intersections/High/Talik_perimeter_v2_BigCreek.csv")%>%
@@ -143,7 +143,7 @@ GobletCreek_Medium <- read_csv("Output/Counterfactual_Talik_perimeters_V2/Inters
   mutate(FireName = "Goblet Creek") %>% select(!Valid)
 SwiftFork_Medium <- read_csv("Output/Counterfactual_Talik_perimeters_V2/Intersections/High/Talik_perimeter_v2_SwiftFork.csv")%>%
   mutate(FireName = "Swift Fork") %>% select(!Valid)
-TowahminLake_Medium <- read_csv("Output/Counterfactual_Talik_perimeters_V2/Intersections/High/Talik_perimeter_v2_TowahminaLake.csv")%>%
+TowahminaLake_Medium <- read_csv("Output/Counterfactual_Talik_perimeters_V2/Intersections/High/Talik_perimeter_v2_TowahminaLake.csv")%>%
   mutate(FireName = "Towahmina Lake") %>% select(!Valid)
 
 
@@ -249,7 +249,10 @@ ggplot(All_Fire_Total_summary, aes(x = Scenario, y = percent_talik_median, fill 
   scale_fill_manual(values = c("1-Low" = "#FFE180",  
                                 "2-Medium" = "#EBA059", 
                                "3-High" = "#BB3C76"))+
-  theme_classic() + ylab("Percent of Counterfactual Perimeter (%)")
+  theme_classic() + ylab("Percent of Counterfactual Perimeter (%)")+
+  theme(axis.text.y = element_text(size = 15),axis.text.x = element_text(size = 15),
+        axis.title.y = element_text(size = 20), axis.title.x = element_text(size = 20), legend.position = "none")
+
 
 ggsave("Output/Talik_area.png", height = 10, width = 10)
 
@@ -260,9 +263,11 @@ geom_density_ridges(aes(x = percent_talik, y = FireName, group = interaction(Fir
   scale_fill_manual(values = c("1-Low" = "#FFE180",  
                                "2-Medium" = "#EBA059",
                                "3-High" = "#BB3C76"))+
-  theme_classic() + xlab("Percent of Counterfactual perimeter (%)")
+  theme_classic() + xlab("Percent of Counterfactual perimeter (%)")+
+  theme(axis.text.y = element_text(size = 10),axis.text.x = element_text(size = 10),
+        axis.title.y = element_text(size = 15), axis.title.x = element_text(size = 15))
 
-ggsave("Output/Talik_areaDensity.png")  
+ggsave("Output/Talik_areaDensity.png", height = 10, width = 10)  
 
 
 
