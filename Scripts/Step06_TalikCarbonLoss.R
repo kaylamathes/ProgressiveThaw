@@ -49,7 +49,7 @@ TalikCarbon_Total_1m_cold_50_percent <- left_join(TalikCarbon_Total_1m_cold_50_Y
 
 ##find Carbon loss (Turn NAs in zero for Carbon loss)
 TalikCarbon_Total_1m_cold_50_percent <- TalikCarbon_Total_1m_cold_50_percent%>%
-  mutate(Carbonloss_kg_1m = (CarbonStorage_kg_1m*percentCarbonLoss_organic)/100)%>%
+  mutate(Carbonloss_kg_1m = (CarbonStorage_kg_1m*percentCarbonLoss_Mineral)/100)%>%
   ungroup()%>%
   replace_na(list(Carbonloss_kg_1m =0))
   
@@ -89,7 +89,7 @@ TalikCarbon_Total_1m_Intermediate_50_percent <- left_join(TalikCarbon_Total_1m_I
 
 ##find Carbon loss (Turn NAs in zero for Carbon loss)
 TalikCarbon_Total_1m_Intermediate_50_percent <- TalikCarbon_Total_1m_Intermediate_50_percent%>%
-  mutate(Carbonloss_kg_1m = (CarbonStorage_kg_1m*percentCarbonLoss_organic)/100)%>%
+  mutate(Carbonloss_kg_1m = (CarbonStorage_kg_1m*percentCarbonLoss_Mineral)/100)%>%
   ungroup()%>%
   replace_na(list(Carbonloss_kg_1m =0))
 
@@ -130,7 +130,7 @@ TalikCarbon_Total_1m_Warm_50_percent <- left_join(TalikCarbon_Total_1m_Warm_50_Y
 
 ##find Carbon loss (Turn NAs in zero for Carbon loss)
 TalikCarbon_Total_1m_Warm_50_percent <- TalikCarbon_Total_1m_Warm_50_percent%>%
-  mutate(Carbonloss_kg_1m = (CarbonStorage_kg_1m*percentCarbonLoss_organic)/100)%>%
+  mutate(Carbonloss_kg_1m = (CarbonStorage_kg_1m*percentCarbonLoss_Mineral)/100)%>%
   ungroup()%>%
   replace_na(list(Carbonloss_kg_1m =0))
 
@@ -179,8 +179,8 @@ TalikCarbon_Total_2m_cold_50_percent_extra <- TalikCarbon_Total_2m_cold_50_perce
 
 ##find Carbon loss (Turn NAs in zero for Carbon loss)
 TalikCarbon_Total_2m_cold_50_percent_extra <- TalikCarbon_Total_2m_cold_50_percent_extra%>%
-  mutate(Carbonloss_kg_2m_step1 = (CarbonStorage_kg_2m_step1*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_2m_step2 = (CarbonStorage_kg_2m_step2*percentCarbonLoss_organic)/100)%>%
+  mutate(Carbonloss_kg_2m_step1 = (CarbonStorage_kg_2m_step1*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_2m_step2 = (CarbonStorage_kg_2m_step2*percentCarbonLoss_Mineral)/100)%>%
   ungroup()%>%
   replace_na(list(Carbonloss_kg_2m_step1 =0,Carbonloss_kg_2m_step2 =0))
 
@@ -232,8 +232,8 @@ TalikCarbon_Total_2m_Intermediate_50_percent_extra <- TalikCarbon_Total_2m_Inter
 
 ##find Carbon loss (Turn NAs in zero for Carbon loss)
 TalikCarbon_Total_2m_Intermediate_50_percent_extra <- TalikCarbon_Total_2m_Intermediate_50_percent_extra%>%
-  mutate(Carbonloss_kg_2m_step1 = (CarbonStorage_kg_2m_step1*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_2m_step2 = (CarbonStorage_kg_2m_step2*percentCarbonLoss_organic)/100)%>%
+  mutate(Carbonloss_kg_2m_step1 = (CarbonStorage_kg_2m_step1*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_2m_step2 = (CarbonStorage_kg_2m_step2*percentCarbonLoss_Mineral)/100)%>%
   ungroup()%>%
   replace_na(list(Carbonloss_kg_2m_step1 =0,Carbonloss_kg_2m_step2 =0))
 
@@ -285,8 +285,8 @@ TalikCarbon_Total_2m_Warm_50_percent_extra <- TalikCarbon_Total_2m_Warm_50_perce
 
 ##find Carbon loss (Turn NAs in zero for Carbon loss)
 TalikCarbon_Total_2m_Warm_50_percent_extra <- TalikCarbon_Total_2m_Warm_50_percent_extra%>%
-  mutate(Carbonloss_kg_2m_step1 = (CarbonStorage_kg_2m_step1*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_2m_step2 = (CarbonStorage_kg_2m_step2*percentCarbonLoss_organic)/100)%>%
+  mutate(Carbonloss_kg_2m_step1 = (CarbonStorage_kg_2m_step1*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_2m_step2 = (CarbonStorage_kg_2m_step2*percentCarbonLoss_Mineral)/100)%>%
   ungroup()%>%
   replace_na(list(Carbonloss_kg_2m_step1 =0,Carbonloss_kg_2m_step2 =0))
 
@@ -348,13 +348,13 @@ TalikCarbon_Total_3m_cold_50_percent_extra <- TalikCarbon_Total_3m_cold_50_perce
 
 ##find Carbon loss (Turn NAs in zero for Carbon loss)
 TalikCarbon_Total_3m_cold_50_percent_extra <- TalikCarbon_Total_3m_cold_50_percent_extra%>%
-  mutate(Carbonloss_kg_3m_step1 = (CarbonStorage_kg_3m_step1*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_3m_step2 = (CarbonStorage_kg_3m_step2*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_3m_step3 = (CarbonStorage_kg_3m_step3*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_3m_step4 = (CarbonStorage_kg_3m_step4*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_3m_step5 = (CarbonStorage_kg_3m_step5*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_3m_step6 = (CarbonStorage_kg_3m_step6*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_3m_step7 = (CarbonStorage_kg_3m_step7*percentCarbonLoss_organic)/100)%>%
+  mutate(Carbonloss_kg_3m_step1 = (CarbonStorage_kg_3m_step1*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_3m_step2 = (CarbonStorage_kg_3m_step2*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_3m_step3 = (CarbonStorage_kg_3m_step3*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_3m_step4 = (CarbonStorage_kg_3m_step4*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_3m_step5 = (CarbonStorage_kg_3m_step5*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_3m_step6 = (CarbonStorage_kg_3m_step6*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_3m_step7 = (CarbonStorage_kg_3m_step7*percentCarbonLoss_Mineral)/100)%>%
   ungroup()%>%
   replace_na(list(Carbonloss_kg_3m_step1 =0,Carbonloss_kg_3m_step2 =0,Carbonloss_kg_3m_step3 =0,
                   Carbonloss_kg_3m_step4 =0,Carbonloss_kg_3m_step5 =0,Carbonloss_kg_3m_step6 =0,
@@ -422,11 +422,11 @@ TalikCarbon_Total_3m_Intermediate_50_percent_extra <- TalikCarbon_Total_3m_Inter
 
 ##find Carbon loss (Turn NAs in zero for Carbon loss)
 TalikCarbon_Total_3m_Intermediate_50_percent_extra <- TalikCarbon_Total_3m_Intermediate_50_percent_extra%>%
-  mutate(Carbonloss_kg_3m_step1 = (CarbonStorage_kg_3m_step1*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_3m_step2 = (CarbonStorage_kg_3m_step2*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_3m_step3 = (CarbonStorage_kg_3m_step3*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_3m_step4 = (CarbonStorage_kg_3m_step4*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_3m_step5 = (CarbonStorage_kg_3m_step5*percentCarbonLoss_organic)/100)%>%
+  mutate(Carbonloss_kg_3m_step1 = (CarbonStorage_kg_3m_step1*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_3m_step2 = (CarbonStorage_kg_3m_step2*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_3m_step3 = (CarbonStorage_kg_3m_step3*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_3m_step4 = (CarbonStorage_kg_3m_step4*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_3m_step5 = (CarbonStorage_kg_3m_step5*percentCarbonLoss_Mineral)/100)%>%
   ungroup()%>%
   replace_na(list(Carbonloss_kg_3m_step1 =0,Carbonloss_kg_3m_step2 =0,Carbonloss_kg_3m_step3 =0,
                   Carbonloss_kg_3m_step4 =0,Carbonloss_kg_3m_step5 =0))
@@ -490,11 +490,11 @@ TalikCarbon_Total_3m_Warm_50_percent_extra <- TalikCarbon_Total_3m_Warm_50_perce
 
 ##find Carbon loss (Turn NAs in zero for Carbon loss)
 TalikCarbon_Total_3m_Warm_50_percent_extra <- TalikCarbon_Total_3m_Warm_50_percent_extra%>%
-  mutate(Carbonloss_kg_3m_step1 = (CarbonStorage_kg_3m_step1*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_3m_step2 = (CarbonStorage_kg_3m_step2*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_3m_step3 = (CarbonStorage_kg_3m_step3*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_3m_step4 = (CarbonStorage_kg_3m_step4*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_3m_step5 = (CarbonStorage_kg_3m_step5*percentCarbonLoss_organic)/100)%>%
+  mutate(Carbonloss_kg_3m_step1 = (CarbonStorage_kg_3m_step1*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_3m_step2 = (CarbonStorage_kg_3m_step2*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_3m_step3 = (CarbonStorage_kg_3m_step3*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_3m_step4 = (CarbonStorage_kg_3m_step4*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_3m_step5 = (CarbonStorage_kg_3m_step5*percentCarbonLoss_Mineral)/100)%>%
   ungroup()%>%
   replace_na(list(Carbonloss_kg_3m_step1 =0,Carbonloss_kg_3m_step2 =0,Carbonloss_kg_3m_step3 =0,
                   Carbonloss_kg_3m_step4 =0,Carbonloss_kg_3m_step5 =0))
@@ -554,9 +554,9 @@ TalikCarbon_Total_deep_cold_50_percent_extra <- TalikCarbon_Total_deep_cold_50_p
 
 ##find Carbon loss (Turn NAs in zero for Carbon loss)
 TalikCarbon_Total_deep_cold_50_percent_extra <- TalikCarbon_Total_deep_cold_50_percent_extra%>%
-  mutate(Carbonloss_kg_deep_step1 = (CarbonStorage_kg_deep_step1*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step2 = (CarbonStorage_kg_deep_step2*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step3 = (CarbonStorage_kg_deep_step3*percentCarbonLoss_organic)/100)%>%
+  mutate(Carbonloss_kg_deep_step1 = (CarbonStorage_kg_deep_step1*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step2 = (CarbonStorage_kg_deep_step2*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step3 = (CarbonStorage_kg_deep_step3*percentCarbonLoss_Mineral)/100)%>%
   ungroup()%>%
   replace_na(list(Carbonloss_kg_deep_step1 =0,Carbonloss_kg_deep_step2 =0,Carbonloss_kg_deep_step3 =0))
 
@@ -636,20 +636,20 @@ mutate(CarbonStorage_kg_deep_step5 = case_when(talik_area_acres > 0 & YST >= 0 &
 
 ##find Carbon loss (Turn NAs in zero for Carbon loss)
 TalikCarbon_Total_deep_Intermediate_50_percent_extra <- TalikCarbon_Total_deep_Intermediate_50_percent_extra%>%
-  mutate(Carbonloss_kg_deep_step1 = (CarbonStorage_kg_deep_step1*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step2 = (CarbonStorage_kg_deep_step2*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step3 = (CarbonStorage_kg_deep_step3*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step4 = (CarbonStorage_kg_deep_step4*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step5 = (CarbonStorage_kg_deep_step5*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step6 = (CarbonStorage_kg_deep_step6*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step7 = (CarbonStorage_kg_deep_step7*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step8 = (CarbonStorage_kg_deep_step8*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step9 = (CarbonStorage_kg_deep_step9*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step10 = (CarbonStorage_kg_deep_step10*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step11 = (CarbonStorage_kg_deep_step11*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step12 = (CarbonStorage_kg_deep_step12*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step13 = (CarbonStorage_kg_deep_step13*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step14 = (CarbonStorage_kg_deep_step14*percentCarbonLoss_organic)/100)%>%
+  mutate(Carbonloss_kg_deep_step1 = (CarbonStorage_kg_deep_step1*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step2 = (CarbonStorage_kg_deep_step2*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step3 = (CarbonStorage_kg_deep_step3*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step4 = (CarbonStorage_kg_deep_step4*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step5 = (CarbonStorage_kg_deep_step5*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step6 = (CarbonStorage_kg_deep_step6*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step7 = (CarbonStorage_kg_deep_step7*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step8 = (CarbonStorage_kg_deep_step8*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step9 = (CarbonStorage_kg_deep_step9*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step10 = (CarbonStorage_kg_deep_step10*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step11 = (CarbonStorage_kg_deep_step11*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step12 = (CarbonStorage_kg_deep_step12*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step13 = (CarbonStorage_kg_deep_step13*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step14 = (CarbonStorage_kg_deep_step14*percentCarbonLoss_Mineral)/100)%>%
   ungroup()%>%
   replace_na(list(Carbonloss_kg_deep_step1 =0,Carbonloss_kg_deep_step2 =0,Carbonloss_kg_deep_step3 =0,
                   Carbonloss_kg_deep_step4 =0,Carbonloss_kg_deep_step5 =0,Carbonloss_kg_deep_step6 =0,
@@ -774,26 +774,26 @@ TalikCarbon_Total_deep_Warm_50_percent_extra <- TalikCarbon_Total_deep_Warm_50_p
 
 ##find Carbon loss (Turn NAs in zero for Carbon loss)
 TalikCarbon_Total_deep_Warm_50_percent_extra <- TalikCarbon_Total_deep_Warm_50_percent_extra%>%
-  mutate(Carbonloss_kg_deep_step1 = (CarbonStorage_kg_deep_step1*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step2 = (CarbonStorage_kg_deep_step2*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step3 = (CarbonStorage_kg_deep_step3*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step4 = (CarbonStorage_kg_deep_step4*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step5 = (CarbonStorage_kg_deep_step5*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step6 = (CarbonStorage_kg_deep_step6*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step7 = (CarbonStorage_kg_deep_step7*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step8 = (CarbonStorage_kg_deep_step8*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step9 = (CarbonStorage_kg_deep_step9*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step10 = (CarbonStorage_kg_deep_step10*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step11 = (CarbonStorage_kg_deep_step11*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step12 = (CarbonStorage_kg_deep_step12*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step13 = (CarbonStorage_kg_deep_step13*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step14 = (CarbonStorage_kg_deep_step14*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step15 = (CarbonStorage_kg_deep_step15*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step16 = (CarbonStorage_kg_deep_step16*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step17 = (CarbonStorage_kg_deep_step17*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step18 = (CarbonStorage_kg_deep_step18*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step19 = (CarbonStorage_kg_deep_step19*percentCarbonLoss_organic)/100)%>%
-  mutate(Carbonloss_kg_deep_step20 = (CarbonStorage_kg_deep_step20*percentCarbonLoss_organic)/100)%>%
+  mutate(Carbonloss_kg_deep_step1 = (CarbonStorage_kg_deep_step1*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step2 = (CarbonStorage_kg_deep_step2*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step3 = (CarbonStorage_kg_deep_step3*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step4 = (CarbonStorage_kg_deep_step4*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step5 = (CarbonStorage_kg_deep_step5*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step6 = (CarbonStorage_kg_deep_step6*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step7 = (CarbonStorage_kg_deep_step7*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step8 = (CarbonStorage_kg_deep_step8*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step9 = (CarbonStorage_kg_deep_step9*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step10 = (CarbonStorage_kg_deep_step10*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step11 = (CarbonStorage_kg_deep_step11*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step12 = (CarbonStorage_kg_deep_step12*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step13 = (CarbonStorage_kg_deep_step13*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step14 = (CarbonStorage_kg_deep_step14*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step15 = (CarbonStorage_kg_deep_step15*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step16 = (CarbonStorage_kg_deep_step16*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step17 = (CarbonStorage_kg_deep_step17*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step18 = (CarbonStorage_kg_deep_step18*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step19 = (CarbonStorage_kg_deep_step19*percentCarbonLoss_Mineral)/100)%>%
+  mutate(Carbonloss_kg_deep_step20 = (CarbonStorage_kg_deep_step20*percentCarbonLoss_Mineral)/100)%>%
   ungroup()%>%
   replace_na(list(Carbonloss_kg_deep_step1 =0,Carbonloss_kg_deep_step2 =0,Carbonloss_kg_deep_step3 =0,
                   Carbonloss_kg_deep_step4 =0,Carbonloss_kg_deep_step5 =0,Carbonloss_kg_deep_step6 =0,
@@ -867,17 +867,34 @@ TalikCarbon_Total_deep_Warm_50_sum_withtotal_extra <- left_join(TalikCarbon_Tota
 ##Write files
 #write_csv(TalikCarbon_Total_1m_cold_50_sum_withtotal, "Output/TalikCarbonLoss/TalikCarbon_Total_1m_cold_50_sum_withtotal.csv")
 #write_csv(TalikCarbon_Total_1m_Intermediate_50_sum_withtotal, "Output/TalikCarbonLoss/TalikCarbon_Total_1m_Intermediate_50_sum_withtotal.csv")
-write_csv(TalikCarbon_Total_1m_Warm_50_sum_withtotal, "Output/TalikCarbonLoss/TalikCarbon_Total_1m_Warm_50_sum_withtotal.csv")
+#write_csv(TalikCarbon_Total_1m_Warm_50_sum_withtotal, "Output/TalikCarbonLoss/TalikCarbon_Total_1m_Warm_50_sum_withtotal.csv")
 
 #write_csv(TalikCarbon_Total_2m_cold_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_2m_cold_50_sum_withtotal_extra.csv")
 #write_csv(TalikCarbon_Total_2m_Intermediate_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_2m_Intermediate_50_sum_withtotal_extra.csv")
-write_csv(TalikCarbon_Total_2m_Warm_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_2m_Warm_50_sum_withtotal_extra.csv")
+#write_csv(TalikCarbon_Total_2m_Warm_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_2m_Warm_50_sum_withtotal_extra.csv")
 
 #write_csv(TalikCarbon_Total_3m_cold_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_3m_cold_50_sum_withtotal_extra.csv")
 #write_csv(TalikCarbon_Total_3m_Intermediate_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_3m_Intermediate_50_sum_withtotal_extra.csv")
-write_csv(TalikCarbon_Total_3m_Warm_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_3m_Warm_50_sum_withtotal_extra.csv")
+#write_csv(TalikCarbon_Total_3m_Warm_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_3m_Warm_50_sum_withtotal_extra.csv")
 
 #write_csv(TalikCarbon_Total_deep_cold_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_deep_cold_50_sum_withtotal_extra.csv")
 #write_csv(TalikCarbon_Total_deep_Intermediate_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_deep_Intermediate_50_sum_withtotal_extra.csv")
-write_csv(TalikCarbon_Total_deep_Warm_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_deep_Warm_50_sum_withtotal_extra.csv")
+#write_csv(TalikCarbon_Total_deep_Warm_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_deep_Warm_50_sum_withtotal_extra.csv")
+
+##Mineral
+write_csv(TalikCarbon_Total_1m_cold_50_sum_withtotal, "Output/TalikCarbonLoss/TalikCarbon_Total_1m_cold_50_sum_withtotal_mineral.csv")
+write_csv(TalikCarbon_Total_1m_Intermediate_50_sum_withtotal, "Output/TalikCarbonLoss/TalikCarbon_Total_1m_Intermediate_50_sum_withtotal_mineral.csv")
+write_csv(TalikCarbon_Total_1m_Warm_50_sum_withtotal, "Output/TalikCarbonLoss/TalikCarbon_Total_1m_Warm_50_sum_withtotal_mineral.csv")
+
+write_csv(TalikCarbon_Total_2m_cold_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_2m_cold_50_sum_withtotal_extra_mineral.csv")
+write_csv(TalikCarbon_Total_2m_Intermediate_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_2m_Intermediate_50_sum_withtotal_extra_mineral.csv")
+write_csv(TalikCarbon_Total_2m_Warm_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_2m_Warm_50_sum_withtotal_extra_mineral.csv")
+
+write_csv(TalikCarbon_Total_3m_cold_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_3m_cold_50_sum_withtotal_extra_mineral.csv")
+write_csv(TalikCarbon_Total_3m_Intermediate_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_3m_Intermediate_50_sum_withtotal_extra_mineral.csv")
+write_csv(TalikCarbon_Total_3m_Warm_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_3m_Warm_50_sum_withtotal_extra_mineral.csv")
+
+write_csv(TalikCarbon_Total_deep_cold_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_deep_cold_50_sum_withtotal_extra_mineral.csv")
+write_csv(TalikCarbon_Total_deep_Intermediate_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_deep_Intermediate_50_sum_withtotal_extra_mineral.csv")
+write_csv(TalikCarbon_Total_deep_Warm_50_sum_withtotal_extra, "Output/TalikCarbonLoss/TalikCarbon_Total_deep_Warm_50_sum_withtotal_extra_mineral.csv")
 
